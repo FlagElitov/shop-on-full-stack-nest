@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Unit Testing App component App Snapshot 1`] = `
+<WithStyles(ForwardRef(Button))
+  color="primary"
+  onClick={[Function]}
+  variant="contained"
+>
+  Отправить 100$
+</WithStyles(ForwardRef(Button))>
+`;

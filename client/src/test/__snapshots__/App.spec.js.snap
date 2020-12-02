@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Unit Testing App component App Snapshot 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="cards"
+  >
+    <Card
+      balance={1000}
+      id={1}
+      key="1"
+      name="Artur"
+      toggleHandler={[Function]}
+    />
+    <Card
+      balance={1000}
+      id={2}
+      key="2"
+      name="Denis"
+      toggleHandler={[Function]}
+    />
+  </div>
+</div>
+`;

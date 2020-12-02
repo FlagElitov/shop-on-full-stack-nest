@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Unit Testing App component App Snapshot 1`] = `
+<div
+  className="card"
+>
+  <div
+    className="name"
+  >
+     
+    Petro
+  </div>
+  <div
+    className="text"
+  >
+     Balance
+  </div>
+  <div
+    className="balance"
+  >
+    500
+    $
+  </div>
+  <div
+    className="button"
+  >
+    <ButtonComponent
+      id="2"
+    />
+  </div>
+</div>
+`;
