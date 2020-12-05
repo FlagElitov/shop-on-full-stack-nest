@@ -1,29 +1,57 @@
 import React from "react";
-import ButtonComponent from "./Button/Button";
+import { makeStyles } from "@material-ui/core/styles";
+import Card from "@material-ui/core/Card";
+import CardActionArea from "@material-ui/core/CardActionArea";
+import CardActions from "@material-ui/core/CardActions";
+import CardContent from "@material-ui/core/CardContent";
+import CardMedia from "@material-ui/core/CardMedia";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
+import { dataProduct } from "../../App";
 
-interface CardProps {
-  name: string;
-  balance: number;
-  id: number;
-  toggleHandler: (id: number) => void;
-}
+const useStyles = makeStyles({
+  root: {
+    maxWidth: 345,
+  },
+});
 
-const Card: React.FC<CardProps> = ({ name, balance, id, toggleHandler }) => {
+const MediaCard: React.FC<dataProduct> = ({
+  company,
+  title,
+  price,
+  rating,
+  image,
+}) => {
+  const classes = useStyles();
+
   return (
-    <div className="card">
-      <div className="name"> {name}</div>
-      <div className="text"> Balance</div>
-      <div className="balance">{balance}$</div>
-
-      <div className="button">
-        {balance < 100 ? (
-          <div className="warning">Нет баланса!</div>
-        ) : (
-          <ButtonComponent toggleHandler={toggleHandler} id={id} />
-        )}
-      </div>
-    </div>
+    <Card className={classes.root}>
+      <CardActionArea>
+        <CardMedia
+          component="img"
+          alt="Contemplative Reptile"
+          height="340"
+          image={image}
+          title="Contemplative Reptile"
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="h2">
+            {title}
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+            Компания: {company}
+            <br />
+            Рейтинг: {rating}
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+      <CardActions>
+        <Button size="small" color="primary">
+          В корзину
+        </Button>
+        <span className="price"> Цена: {price}$</span>
+      </CardActions>
+    </Card>
   );
 };
-
-export default Card;
+export default MediaCard;

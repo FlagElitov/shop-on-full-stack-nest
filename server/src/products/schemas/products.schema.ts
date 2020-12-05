@@ -7,9 +7,14 @@ export type ProductDocument = Product & Document;
 export class Product {
   @Prop()
   title: string;
-
   @Prop()
   price: number;
+  @Prop()
+  company: string;
+  @Prop()
+  image: string;
+  @Prop()
+  rating: number;
 }
 
 export const ProductSchema = SchemaFactory.createForClass(Product);

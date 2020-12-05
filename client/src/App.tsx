@@ -1,60 +1,59 @@
 import axios from "axios";
 import React from "react";
 import "./App.scss";
+import Menu from "./component/Menu/Menu";
 import Card from "./component/Card/Card";
+import { Route, Switch } from "react-router-dom";
+import Basket from "./component/Basket/Basket";
 
-type dataTypes = {
-  id: number;
-  name: string;
-  balance: number;
-};
+export interface dataProduct {
+  title: string;
+  price: number;
+  image: string;
+  rating: number;
+  company: string;
+}
 
 const App: React.FC = () => {
-  const [data, setData] = React.useState<dataTypes[]>([
-    { id: 1, name: "Artur", balance: 1000 },
-    { id: 2, name: "Denis", balance: 1000 },
-  ]);
+  const [data, setData] = React.useState<dataProduct[]>([]);
+
+  console.log(data);
 
   React.useEffect(() => {
-    axios.get(`http://localhost:3005/products`).then((data) => {
-      console.log(data);
+    axios.get(`http://localhost:3005/products`).then(({ data }) => {
+      setData(data);
     });
   }, []);
 
-  const toggleHandler = (id: number) => {
-    setData((prev) =>
-      prev.map((data) => {
-        if (data.id !== id) {
-          return {
-            ...data,
-            balance: data.balance + 100,
-          };
-        }
-        if (data.id === id) {
-          return {
-            ...data,
-            balance: data.balance - 100,
-          };
-        }
-        return data;
-      })
-    );
-  };
-
   return (
-    <div className="container">
-      <div className="cards">
-        {data.map((data: dataTypes) => (
-          <Card
-            key={data.id}
-            id={data.id}
-            toggleHandler={toggleHandler}
-            name={data.name}
-            balance={data.balance}
+    <>
+      <Menu />
+      <div className="container">
+        <Switch>
+          <Route exact path="/basket" component={Basket} />
+          <Route
+            exact
+            path="/"
+            render={() => (
+              <div className="contentCard">
+                {data &&
+                  data.map((datas: dataProduct) => (
+                    <div className="card">
+                      <Card
+                        title={datas.title}
+                        price={datas.price}
+                        rating={datas.rating}
+                        company={datas.company}
+                        image={datas.image}
+                      />
+                    </div>
+                  ))}
+              </div>
+            )}
           />
-        ))}
+        </Switch>
       </div>
-    </div>
+    </>
   );
 };
 export default App;

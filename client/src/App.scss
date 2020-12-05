@@ -6,6 +6,14 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+* {
+  text-decoration: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
@@ -15,38 +23,27 @@ code {
 .container {
   max-width: 1170px;
   margin: 0 auto;
-  .cards {
+  .contentCard {
+    margin-top: 30px;
     display: flex;
-    margin-top: 80px;
-    justify-content: space-around;
+    flex-wrap: wrap;
+    justify-content: space-between;
     .card {
-      text-align: center;
-      width: 400px;
-      height: 600px;
-      border: 3px #fafafa solid;
-      box-shadow: 0px 0px 6px 0px;
-      .name {
-        margin-top: 100px;
-        font-size: 51px;
-      }
-      .text {
-        font-size: 28px;
-        margin-top: 30px;
-      }
-      .balance {
-        margin-top: 10px;
-        font-size: 25px;
-      }
-      .input {
-        margin-top: 30px;
-      }
-      .warning {
-        font-size: 20px;
-        color: red;
-      }
-      .button {
-        margin-top: 60px;
+      margin-top: 30px;
+      .price {
+        margin-left: 130px;
+        font-size: 19px;
       }
     }
   }
+}
+
+.logo {
+  color: #ffffff;
+}
+
+.basket {
+  color: #ffffff;
+
+  text-align: center;
 }
