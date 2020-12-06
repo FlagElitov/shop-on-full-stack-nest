@@ -1,16 +1,13 @@
 import {
-  POKEMON_FAIL,
-  POKEMON_LOADING,
-  POKEMON_SUCCESS,
-} from "../action/PokemonAction";
-import {
-  PokemonDispatchTypes,
-  PokemonType,
-} from "./../action/PokemonActionTypes";
+  ITEMS_FAIL,
+  ITEMS_LOADING,
+  ITEMS_SUCCESS,
+} from "../action/ItemsAction";
+import { ItemsDispatchTypes, dataProduct } from "../action/ItemsActionTypes";
 export interface initialStateT {
   loading: boolean;
-  faile?: boolean;
-  pokemon?: PokemonType;
+  faile: boolean;
+  items?: dataProduct[];
 }
 
 const initialState: initialStateT = {
@@ -18,30 +15,30 @@ const initialState: initialStateT = {
   faile: false,
 };
 
-const PokemonReducer = (
+const ItemsReducer = (
   state: initialStateT = initialState,
-  action: PokemonDispatchTypes
+  action: ItemsDispatchTypes
 ) => {
   switch (action.type) {
-    case POKEMON_LOADING:
+    case ITEMS_LOADING:
       return {
         ...state,
         faile: false,
         loading: true,
       };
 
-    case POKEMON_FAIL:
+    case ITEMS_FAIL:
       return {
         ...state,
         loading: false,
         faile: true,
       };
 
-    case POKEMON_SUCCESS:
+    case ITEMS_SUCCESS:
       return {
         ...state,
         loading: false,
-        pokemon: action.payload,
+        items: action.payload,
       };
 
     default:
@@ -49,4 +46,4 @@ const PokemonReducer = (
   }
 };
 
-export default PokemonReducer;
+export default ItemsReducer;

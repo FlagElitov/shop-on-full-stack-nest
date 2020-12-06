@@ -206,7 +206,7 @@ class PrimarySearchAppBar extends React.Component<Props, State> {
             <div className={classes.sectionDesktop}>
               <Link to="/basket">
                 <Button variant="contained" color="secondary">
-                  <div className="basket"> Basket </div>
+                  <div className="basket"> 521$ | 1 </div>
                 </Button>
               </Link>
             </div>

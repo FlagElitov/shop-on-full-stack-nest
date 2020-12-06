@@ -1,28 +1,22 @@
-import axios from "axios";
 import React from "react";
 import "./App.scss";
 import Menu from "./component/Menu/Menu";
 import Card from "./component/Card/Card";
 import { Route, Switch } from "react-router-dom";
 import Basket from "./component/Basket/Basket";
-
-export interface dataProduct {
-  title: string;
-  price: number;
-  image: string;
-  rating: number;
-  company: string;
-}
+import { dataProduct } from "./redux/action/ItemsActionTypes";
+import { useDispatch, useSelector } from "react-redux";
+import { itemsRequest } from "./redux/action/ItemsAction";
+import { RootStore } from "./redux/redux-store";
+import { initialStateT } from "./redux/reducers/ItemsReducers";
 
 const App: React.FC = () => {
-  const [data, setData] = React.useState<dataProduct[]>([]);
-
-  console.log(data);
+  const dispatch = useDispatch();
+  const items: initialStateT = useSelector((state: RootStore) => state.itemsR);
+  const data = items.items;
 
   React.useEffect(() => {
-    axios.get(`http://localhost:3005/products`).then(({ data }) => {
-      setData(data);
-    });
+    dispatch(itemsRequest());
   }, []);
 
   return (
@@ -36,6 +30,8 @@ const App: React.FC = () => {
             path="/"
             render={() => (
               <div className="contentCard">
+                {items.loading && "Загрузка"}
+                {items.faile && "Помилка"}
                 {data &&
                   data.map((datas: dataProduct) => (
                     <div className="card">
