@@ -24,7 +24,7 @@ code {
   max-width: 1170px;
   margin: 0 auto;
   .contentCard {
-    margin-top: 30px;
+    margin-top: 20px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -40,6 +40,11 @@ code {
 
 .logo {
   color: #ffffff;
+}
+
+.sort {
+  color: #ffffff;
+  text-transform: none;
 }
 
 .basket {

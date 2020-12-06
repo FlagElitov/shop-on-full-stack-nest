@@ -3,6 +3,8 @@ import {
   ITEMS_LOADING,
   ITEMS_SUCCESS,
   REQUEST_ITEMS,
+  SORT_PRICE,
+  SORT_RATING,
 } from "./ItemsAction";
 
 export interface dataProduct {
@@ -26,5 +28,15 @@ export interface ItemsSuccess {
 export interface RequestItems {
   type: typeof REQUEST_ITEMS;
 }
-
-export type ItemsDispatchTypes = ItemsLoading | ItemsFail | ItemsSuccess;
+export interface itemsSortPrice {
+  type: typeof SORT_PRICE;
+}
+export interface itemsSortRating {
+  type: typeof SORT_RATING;
+}
+export type ItemsDispatchTypes =
+  | ItemsLoading
+  | ItemsFail
+  | ItemsSuccess
+  | itemsSortPrice
+  | itemsSortRating;

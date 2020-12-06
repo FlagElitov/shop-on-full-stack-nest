@@ -1,3 +1,4 @@
+import { SORT_PRICE, SORT_RATING } from "./../action/ItemsAction";
 import {
   ITEMS_FAIL,
   ITEMS_LOADING,
@@ -39,6 +40,16 @@ const ItemsReducer = (
         ...state,
         loading: false,
         items: action.payload,
+      };
+    case SORT_PRICE:
+      return {
+        ...state,
+        items: state.items!.sort((a, b) => b.price - a.price),
+      };
+    case SORT_RATING:
+      return {
+        ...state,
+        items: state.items!.sort((a, b) => b.rating - a.rating),
       };
 
     default:

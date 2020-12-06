@@ -13,7 +13,9 @@ import { initialStateT } from "./redux/reducers/ItemsReducers";
 const App: React.FC = () => {
   const dispatch = useDispatch();
   const items: initialStateT = useSelector((state: RootStore) => state.itemsR);
-  const data = items.items;
+  // const [data, setData] = useState(initialState)
+  const data: dataProduct[] | undefined = items.items;
+  // console.log(data?.sort((a, b) => a.price - b.price));
 
   React.useEffect(() => {
     dispatch(itemsRequest());
@@ -33,8 +35,8 @@ const App: React.FC = () => {
                 {items.loading && "Загрузка"}
                 {items.faile && "Помилка"}
                 {data &&
-                  data.map((datas: dataProduct) => (
-                    <div className="card">
+                  data.map((datas: dataProduct, index) => (
+                    <div className="card" key={index}>
                       <Card
                         title={datas.title}
                         price={datas.price}

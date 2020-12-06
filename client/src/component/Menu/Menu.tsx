@@ -22,6 +22,7 @@ import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import { Link } from "react-router-dom";
 import { Button } from "@material-ui/core";
+import MenuBar from "../MenuBar/MenuBar";
 
 const styles = (theme: Theme) =>
   createStyles({
@@ -202,7 +203,9 @@ class PrimarySearchAppBar extends React.Component<Props, State> {
                 }}
               />
             </div>
+            <MenuBar />
             <div className={classes.grow} />
+
             <div className={classes.sectionDesktop}>
               <Link to="/basket">
                 <Button variant="contained" color="secondary">

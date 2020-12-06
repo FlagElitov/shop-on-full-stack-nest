@@ -30,7 +30,7 @@ const MediaCard: React.FC<dataProduct> = ({
         <CardMedia
           component="img"
           alt="Contemplative Reptile"
-          height="340"
+          height="410"
           image={image}
           title="Contemplative Reptile"
         />
