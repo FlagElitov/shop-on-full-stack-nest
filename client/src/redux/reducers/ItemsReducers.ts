@@ -1,4 +1,4 @@
-import { SORT_PRICE, SORT_RATING } from "./../action/ItemsAction";
+import { FILTER_INPUT, SORT_PRICE, SORT_RATING } from "./../action/ItemsAction";
 import {
   ITEMS_FAIL,
   ITEMS_LOADING,
@@ -50,6 +50,13 @@ const ItemsReducer = (
       return {
         ...state,
         items: state.items!.sort((a, b) => b.rating - a.rating),
+      };
+    case FILTER_INPUT:
+      return {
+        ...state,
+        items: state.items!.filter((filter) =>
+          filter.title.includes(action.payload)
+        ),
       };
 
     default:

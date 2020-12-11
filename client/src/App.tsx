@@ -17,6 +17,8 @@ const App: React.FC = () => {
   const data: dataProduct[] | undefined = items.items;
   // console.log(data?.sort((a, b) => a.price - b.price));
 
+  console.log(data);
+
   React.useEffect(() => {
     dispatch(itemsRequest());
   }, []);

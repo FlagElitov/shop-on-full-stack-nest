@@ -1,4 +1,5 @@
 import {
+  FILTER_INPUT,
   ITEMS_FAIL,
   ITEMS_LOADING,
   ITEMS_SUCCESS,
@@ -34,9 +35,15 @@ export interface itemsSortPrice {
 export interface itemsSortRating {
   type: typeof SORT_RATING;
 }
+export interface InputFilters {
+  type: typeof FILTER_INPUT;
+  payload: string;
+}
+
 export type ItemsDispatchTypes =
   | ItemsLoading
   | ItemsFail
   | ItemsSuccess
   | itemsSortPrice
-  | itemsSortRating;
+  | itemsSortRating
+  | InputFilters;
