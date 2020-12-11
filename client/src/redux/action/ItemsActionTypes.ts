@@ -14,6 +14,7 @@ export interface dataProduct {
   image: string;
   rating: number;
   company: string;
+  id?: number;
 }
 
 export interface ItemsLoading {

@@ -9,12 +9,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { itemsRequest } from "./redux/action/ItemsAction";
 import { RootStore } from "./redux/redux-store";
 import { initialStateT } from "./redux/reducers/ItemsReducers";
+import InputText from "./component/Input/Input";
 
 const App: React.FC = () => {
   const dispatch = useDispatch();
   const items: initialStateT = useSelector((state: RootStore) => state.itemsR);
-  // const [data, setData] = useState(initialState)
-  const data: dataProduct[] | undefined = items.items;
+
+  const [text, setText] = React.useState("");
+  const data: dataProduct[] | undefined = items.items.filter((filter) =>
+    filter.title.toLowerCase().includes(text.toLowerCase())
+  );
   // console.log(data?.sort((a, b) => a.price - b.price));
 
   console.log(data);
@@ -27,6 +31,7 @@ const App: React.FC = () => {
     <>
       <Menu />
       <div className="container">
+        <InputText setText={setText} />
         <Switch>
           <Route exact path="/basket" component={Basket} />
           <Route

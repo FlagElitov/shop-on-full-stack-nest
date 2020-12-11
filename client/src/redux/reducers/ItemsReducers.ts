@@ -8,12 +8,13 @@ import { ItemsDispatchTypes, dataProduct } from "../action/ItemsActionTypes";
 export interface initialStateT {
   loading: boolean;
   faile: boolean;
-  items?: dataProduct[];
+  items: dataProduct[];
 }
 
 const initialState: initialStateT = {
   loading: false,
   faile: false,
+  items: [],
 };
 
 const ItemsReducer = (
@@ -55,7 +56,7 @@ const ItemsReducer = (
       return {
         ...state,
         items: state.items!.filter((filter) =>
-          filter.title.includes(action.payload)
+          filter.title.toLowerCase().includes(action.payload.toLowerCase())
         ),
       };
 

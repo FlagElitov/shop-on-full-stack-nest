@@ -101,6 +101,9 @@ interface State {
   anchorEl: null | HTMLElement;
   mobileMoreAnchorEl: null | HTMLElement;
 }
+// type InputTypes = {
+//   setText: (text: string) => void;
+// };
 
 class PrimarySearchAppBar extends React.Component<Props, State> {
   state: State = {
