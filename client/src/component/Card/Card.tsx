@@ -8,6 +8,8 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { dataProduct } from "../../redux/action/ItemsActionTypes";
+import { useDispatch } from "react-redux";
+import { addCardAC } from "../../redux/action/CardAction";
 
 const useStyles = makeStyles({
   root: {
@@ -21,9 +23,11 @@ const MediaCard: React.FC<dataProduct> = ({
   price,
   rating,
   image,
+  id,
 }) => {
+  const dispatch = useDispatch();
   const classes = useStyles();
-
+  const card: dataProduct = { company, title, price, rating, image, id };
   return (
     <Card className={classes.root}>
       <CardActionArea>
@@ -46,7 +50,11 @@ const MediaCard: React.FC<dataProduct> = ({
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
+        <Button
+          size="small"
+          color="primary"
+          onClick={() => dispatch(addCardAC(card))}
+        >
           В корзину
         </Button>
         <span className="price"> Цена: {price}$</span>

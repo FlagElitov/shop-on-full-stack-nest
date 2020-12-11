@@ -16,7 +16,7 @@ const App: React.FC = () => {
   const items: initialStateT = useSelector((state: RootStore) => state.itemsR);
 
   const [text, setText] = React.useState("");
-  const data: dataProduct[] | undefined = items.items.filter((filter) =>
+  const data: dataProduct[] = items.items.filter((filter) =>
     filter.title.toLowerCase().includes(text.toLowerCase())
   );
   // console.log(data?.sort((a, b) => a.price - b.price));
@@ -31,29 +31,32 @@ const App: React.FC = () => {
     <>
       <Menu />
       <div className="container">
-        <InputText setText={setText} />
         <Switch>
           <Route exact path="/basket" component={Basket} />
           <Route
             exact
             path="/"
             render={() => (
-              <div className="contentCard">
-                {items.loading && "Загрузка"}
-                {items.faile && "Помилка"}
-                {data &&
-                  data.map((datas: dataProduct, index) => (
-                    <div className="card" key={index}>
-                      <Card
-                        title={datas.title}
-                        price={datas.price}
-                        rating={datas.rating}
-                        company={datas.company}
-                        image={datas.image}
-                      />
-                    </div>
-                  ))}
-              </div>
+              <>
+                <InputText setText={setText} />
+                <div className="contentCard">
+                  {items.loading && "Загрузка"}
+                  {items.faile && "Помилка"}
+                  {data &&
+                    data.map((datas: dataProduct, index) => (
+                      <div className="card" key={index}>
+                        <Card
+                          title={datas.title}
+                          price={datas.price}
+                          rating={datas.rating}
+                          company={datas.company}
+                          image={datas.image}
+                          id={datas.id}
+                        />
+                      </div>
+                    ))}
+                </div>
+              </>
             )}
           />
         </Switch>

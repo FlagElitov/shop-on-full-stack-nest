@@ -3,11 +3,11 @@ import { CardDispatchTypes } from "./../action/CardActionTypes";
 import { dataProduct } from "../action/ItemsActionTypes";
 import { ADD_CARD, REMOVE_CARD } from "../action/CardAction";
 export interface initialStateCard {
-  items: dataProduct[];
+  card: dataProduct[];
 }
 
 const initialState: initialStateCard = {
-  items: [],
+  card: [],
 };
 
 const CardReducers = (
@@ -18,13 +18,13 @@ const CardReducers = (
     case ADD_CARD:
       return {
         ...state,
-        items: [state.items, action.payload],
+        card: [state.card, action.payload],
       };
 
     case REMOVE_CARD:
       return {
         ...state,
-        items: [state.items.filter((items) => items.id != action.payload)],
+        card: [state.card.filter((items) => items.id !== action.payload)],
       };
 
     default:

@@ -194,18 +194,7 @@ class PrimarySearchAppBar extends React.Component<Props, State> {
                 <span className="logo"> Full-stack shop </span>
               </Link>
             </Typography>
-            <div className={classes.search}>
-              <div className={classes.searchIcon}>
-                <SearchIcon />
-              </div>
-              <InputBase
-                placeholder="Search…"
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput,
-                }}
-              />
-            </div>
+            <div className={classes.search}></div>
             <MenuBar />
             <div className={classes.grow} />
 
