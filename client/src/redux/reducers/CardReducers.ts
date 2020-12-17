@@ -18,15 +18,15 @@ const CardReducers = (
     case ADD_CARD:
       return {
         ...state,
-        card: [state.card, action.payload],
+        card: [...state.card, action.payload],
       };
 
     case REMOVE_CARD:
       return {
         ...state,
-        card: [state.card.filter((items) => items.id !== action.payload)],
+        card: state.card.filter((items) => items._id != action.payload),
       };
-
+      break;
     default:
       return state;
   }

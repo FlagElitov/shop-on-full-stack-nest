@@ -23,11 +23,11 @@ const MediaCard: React.FC<dataProduct> = ({
   price,
   rating,
   image,
-  id,
+  _id,
 }) => {
   const dispatch = useDispatch();
   const classes = useStyles();
-  const card: dataProduct = { company, title, price, rating, image, id };
+  const card: dataProduct = { company, title, price, rating, image, _id };
   return (
     <Card className={classes.root}>
       <CardActionArea>

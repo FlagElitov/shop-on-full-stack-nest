@@ -14,7 +14,7 @@ export interface dataProduct {
   image: string;
   rating: number;
   company: string;
-  id: number;
+  _id: number;
 }
 
 export interface ItemsLoading {

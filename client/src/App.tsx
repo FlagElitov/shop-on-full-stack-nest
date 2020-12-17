@@ -16,12 +16,12 @@ const App: React.FC = () => {
   const items: initialStateT = useSelector((state: RootStore) => state.itemsR);
 
   const [text, setText] = React.useState("");
-  const data: dataProduct[] = items.items.filter((filter) =>
-    filter.title.toLowerCase().includes(text.toLowerCase())
+  const data: dataProduct[] = items.items.filter(
+    (filter) =>
+      filter.title.toLowerCase().includes(text.toLowerCase()) ||
+      filter.company.toLowerCase().includes(text.toLowerCase())
   );
   // console.log(data?.sort((a, b) => a.price - b.price));
-
-  console.log(data);
 
   React.useEffect(() => {
     dispatch(itemsRequest());
@@ -51,7 +51,7 @@ const App: React.FC = () => {
                           rating={datas.rating}
                           company={datas.company}
                           image={datas.image}
-                          id={datas.id}
+                          _id={datas._id}
                         />
                       </div>
                     ))}
